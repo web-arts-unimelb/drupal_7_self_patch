@@ -1,0 +1,27 @@
+diff --git a/quicktabs.classes.inc b/quicktabs.classes.inc
+index 56c2569..6aa9c32 100644
+--- a/quicktabs.classes.inc
++++ b/quicktabs.classes.inc
+@@ -188,7 +188,14 @@ class QuickSet {
+       $renderable_contents = 0;
+       foreach ($this->contents as $key => $tab) {
+         $contents = $tab->render(TRUE);
+-        if (empty($contents)) {
++
++				reset($contents);
++				
++				// Need to remove everything.
++        $contents[key($contents)]['#markup'] = trim($contents[key($contents)]['#markup']);
++
++				if (empty($contents[key($contents)]) || empty($contents[key($contents)]['#markup'])) {
++        //if (empty($contents)) {
+           // Rather than removing the item, we set it to NULL. This way we retain
+           // the same indices across tabs, so that permanent links to particular
+           // tabs can be relied upon.
+@@ -513,4 +520,4 @@ class QuickPreRenderedContent implements QuickContentRenderable {
+  */
+ class InvalidQuickSetException extends Exception {
+   
+-}
+\ No newline at end of file
++}

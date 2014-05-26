@@ -1,0 +1,15 @@
+diff --git a/plugins/views_plugin_query_default.inc b/plugins/views_plugin_query_default.inc
+index 8a15e8d..95b8d29 100644
+--- a/plugins/views_plugin_query_default.inc
++++ b/plugins/views_plugin_query_default.inc
+@@ -1339,6 +1339,10 @@ class views_plugin_query_default extends views_plugin_query {
+           if ($order['field'] == 'rand_') {
+             $query->orderRandom();
+           }
++					// Gary
++          else if(!isset($order['direction'])) {
++            $query->orderBy($order['field'], 'ASC');
++          }
+           else {
+             $query->orderBy($order['field'], $order['direction']);
+           }

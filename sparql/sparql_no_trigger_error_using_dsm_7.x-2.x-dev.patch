@@ -1,0 +1,23 @@
+diff --git a/sparql.module b/sparql.module
+index 16acbfe..8b7765b 100644
+--- a/sparql.module
++++ b/sparql.module
+@@ -87,10 +87,18 @@ function _sparql_request($query, $endpoint) {
+   // Execute the query.
+   $rs = $store->query($query);
+   if ($errors = $store->getErrors()) {
++		/*
+     // Log errors.
+     foreach ($errors as $error) {
+       trigger_error($error, E_USER_ERROR);
+     }
++		*/
++		foreach ($errors as $error) {
++    	// Devel needs to be enabled.
++    	// trigger_error just throws errors to screen.
++    	dsm($errors);
++    }
++
+     return NULL;
+   }
+   else {

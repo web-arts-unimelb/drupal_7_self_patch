@@ -1,0 +1,18 @@
+diff --git a/field.info.class.inc b/field.info.class.inc
+index 3b89898..3ec39b2 100755
+--- a/field.info.class.inc
++++ b/field.info.class.inc
+@@ -340,6 +340,13 @@ class FieldInfo {
+    */
+   public function getBundleInstances($entity_type, $bundle) {
+     // Read from the "static" cache.
++
++		// Gary
++    // http://stackoverflow.com/questions/2732451/php-how-do-i-fix-this-illegal-offset-type-error 
++    if(is_array($bundle) || is_object($bundle)) {
++      return;
++    }
++
+     if (isset($this->bundleInstances[$entity_type][$bundle])) {
+       return $this->bundleInstances[$entity_type][$bundle];
+     }

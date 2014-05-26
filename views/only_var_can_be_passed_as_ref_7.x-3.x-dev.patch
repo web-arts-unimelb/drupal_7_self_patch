@@ -1,0 +1,18 @@
+diff --git a/views.module b/views.module
+index 20258df..0c6900e 100644
+--- a/views.module
++++ b/views.module
+@@ -737,8 +737,11 @@ function views_add_block_contextual_links(&$block, $view, $display_id, $block_ty
+     if (is_string($block['content'])) {
+       $block['content'] = array('#markup' => $block['content']);
+     }
+-    // Add the contextual links.
+-    views_add_contextual_links($block['content'], $block_type, $view, $display_id);
++		
++		// Gary
++    // http://stackoverflow.com/questions/17279695/php-only-variables-can-be-passed-by-reference
++    $tmp_content = $block['content'];
++    views_add_contextual_links($tmp_content, $block_type, $view, $display_id);
+   }
+ }
+ 

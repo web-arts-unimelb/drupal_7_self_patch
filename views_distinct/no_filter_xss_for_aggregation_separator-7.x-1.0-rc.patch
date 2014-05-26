@@ -1,0 +1,15 @@
+diff --git a/views_distinct.module b/views_distinct.module
+index 685b195..846e6cf 100644
+--- a/views_distinct.module
++++ b/views_distinct.module
+@@ -364,7 +364,9 @@ function _views_distinct_field_settings_get($view_name, $display_name, $field_na
+       $settings = unserialize($result->settings) + _views_distinct_field_settings_defaults();
+       // HTML is allowed, but filter for terrible exploits in the aggregation
+       // joiner:
+-      $settings['aggregate_separator'] = filter_xss($settings['aggregate_separator']);
++			// Gary
++      // I comment it out, because I need to use br tag
++      //$settings['aggregate_separator'] = filter_xss($settings['aggregate_separator']);
+       $static_cache[$view_name] = array_merge_recursive(
+         $static_cache[$view_name],
+         array(

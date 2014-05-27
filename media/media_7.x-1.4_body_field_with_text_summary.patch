@@ -1,0 +1,25 @@
+diff --git a/includes/media.filter.inc b/includes/media.filter.inc
+index a3257f9..461fd0f 100644
+--- a/includes/media.filter.inc
++++ b/includes/media.filter.inc
+@@ -422,6 +422,20 @@ function media_pre_render_text_format($element) {
+     'field' => $field['#id'],
+   );
+ 
++	// Gary
++  if(isset($field['#value']['value'])) {
++    // Special case: body (with text summary) has an extra field called text summary.
++    if(empty($field['#value']['value'])) {
++      $tmp_var = '';
++    }
++    else {
++      $tmp_var = $field['#value']['value'];
++    }
++  }
++  else {
++    $tagmap = _media_generate_tagMap($field['#value']);
++  }
++
+   $tagmap = _media_generate_tagMap($field['#value']);
+ 
+   if (isset($tagmap)) {

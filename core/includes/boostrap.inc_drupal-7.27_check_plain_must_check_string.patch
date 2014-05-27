@@ -1,0 +1,16 @@
+diff --git a/includes/bootstrap.inc b/includes/bootstrap.inc
+index 4cc3914..65a7385 100644
+--- a/includes/bootstrap.inc
++++ b/includes/bootstrap.inc
+@@ -1563,6 +1563,11 @@ function format_string($string, array $args = array()) {
+  * @ingroup sanitization
+  */
+ function check_plain($text) {
++	// Gary
++  if(!is_string($text)) {
++    return;
++  }
++
+   return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+ }
+ 
